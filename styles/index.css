@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
+  @apply bg-gray-200 p-12;
+} */
+
+@font-face {
+  font-family: "Blueberry";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/Blueberry-Regular.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: "Pacifico";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/Pacifico-Regular.woff2") format('woff2');
+}
