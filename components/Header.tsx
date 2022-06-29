@@ -1,4 +1,6 @@
 import React from "react";
+import Image from 'next/image'
+
 
 export default function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -7,14 +9,20 @@ export default function Header() {
     <div className="hidden sm:block  fixed top-0 w-full z-30 clearNav sm:bg-opacity-30 bg-gray-600 transition duration-300 ease-in-out  border-b-2 border-gray-400 border-opacity-25">
       <div className="flex flex-col px-0 mx-auto sm:items-center sm:justify-between sm:flex-row sm:px-1 md:px-6 sm:pt-1 md:pt-2 lg:px-8">
         <div className="flex flex-row items-center justify-between md:p-2">
-          <a
-            href="/"
-            className="text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline"
+          <div
+            className="relative selection:text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline"
           >
-            <img className="relative object-cover w-7 sm:w-14 rounded-full bg-gray-100 border-gray-400 border-2 "   alt="Logo"
+            {/* <img className="relative object-cover w-7 sm:w-14 rounded-full bg-gray-100 border-gray-400 border-2 "   alt="Logo"
              src="/images/iland-50pcSize-8bit.png"
-            ></img>
-          </a>
+            ></img> */}
+            <Image
+             src="/images/iland-50pcSize-8bit.png"
+             alt="Logo"
+             layout="fill" // required
+             objectFit="cover" 
+             className="w-7 sm:w-14 rounded-full bg-gray-100 border-gray-400 border-2 " 
+             />
+          </div>
           <button
             className="text-white cursor-pointer leading-none px-3 py-1 sm:hidden outline-none focus:outline-none "
             type="button"

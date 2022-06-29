@@ -3,6 +3,7 @@ import {ConnectWButton, DisConnectWButton, ChainName, PageObserver, SwitchNetwor
 import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
+import Image from 'next/image'
 // import dynamic from "next/dynamic";
 // const Header = dynamic(() => import("../components/Header").then(module => module.default));
 // const Header = dynamic( (()=>import('../components/Header')) as any,{ ssr: false}, )
@@ -44,8 +45,22 @@ export const Home = (): JSX.Element => {
     <div className="w-screen h-screen bg-customSky">
 
       <div className="relative w-screen h-screen flex justify-center ">
-       <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />
-       <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" />
+       {/* <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />
+       <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" /> */}
+       <Image
+             src="/images/landingPageSmall.png"
+             alt="image"
+             layout="fill" // required
+             objectFit="cover" 
+             className="w-screen absolute sm:hidden bottom-0 max-h-1/2" 
+             />
+       <Image
+             src="/images/landingPage.png"
+             alt="image"
+             layout="fill" // required
+             objectFit="cover" 
+             className="w-screen absolute hidden sm:block bottom-0" 
+             />
 
          {!web3Provider?
           <></>
