@@ -9,7 +9,7 @@ export default function MyApp ({ Component, pageProps }: AppProps){
   return (
     <Context1.Provider value={{ state, dispatch }}>
       <Component {...pageProps} />
-    // </Context1.Provider>
+     </Context1.Provider>
   )
 }
 
