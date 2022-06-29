@@ -1,13 +1,27 @@
 import '../styles/index.css'
-import { Context, reducer, initialState } from '../lib/context'
+import { Context1, reducer, initialState } from '../lib/context'
 import { useReducer } from 'react'
-function MyApp({ Component, pageProps }) {
-  const [state, dispatch] = useReducer(reducer, initialState)
+import { AppProps } from "next/app"
+
+
+export default function MyApp ({ Component, pageProps }: AppProps){
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <Context.Provider value={{ state, dispatch }}>
+    <Context1.Provider value={{ state, dispatch }}>
       <Component {...pageProps} />
-    </Context.Provider>
+    // </Context1.Provider>
   )
 }
 
-export default MyApp
+
+// const [ctx, CtxProvider] = createCtx(reducer, initialState)
+// export const CountContext = ctx
+// function MyApp() {
+//   const [state, dispatch] = useReducer(reducer, initialState)
+//   return (
+//     <CtxProvider>
+//       <Component  />
+//     </CtxProvider>
+//   )
+// }
+

@@ -3,6 +3,16 @@ import {ConnectWButton, DisConnectWButton, ChainName, PageObserver, SwitchNetwor
 import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
+// import dynamic from "next/dynamic";
+// const Header = dynamic(() => import("../components/Header").then(module => module.default));
+// const Header = dynamic( (()=>import('../components/Header')) as any,{ ssr: false}, )
+
+  // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+  // const ChainName = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+  // const PageObserver = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+  // const SwitchNetwork = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+  // const ConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+  
 
 export const Home = (): JSX.Element => {
 
@@ -54,7 +64,7 @@ export const Home = (): JSX.Element => {
                       </div> 
                       </div>
                   </div>
-                  {chainId == '1' || chainId === '0x1' ? <></>: 
+                  {chainId?.toString() == '1' || chainId?.toString() === '0x1' ? <></>: 
                   <div  className="flex mt-5 bg-yellow-200 flex-wrap items-center align-middle justify-center text-xs "> 
 
                   🔥  Error!!! Wrong Chain  🔥
@@ -77,7 +87,7 @@ export const Home = (): JSX.Element => {
               :
               <div className="flex flex-row mt-5 font-bold leading-6 font-mono text-md  px-1 align-middle items-center justify-center"> 
               <div className="text-2xl ">⏳</div>
-              <p className="rounded-md border border-gray-400 bg-white text-2xl p-1 ">Minting is paused</p> 
+              <p className="rounded-md border border-gray-400 bg-white text-2xl p-1 ">Minting to start soon!!</p> 
               <div className="text-2xl ">⏰</div>
               </div>
         }
@@ -102,7 +112,11 @@ export const Home = (): JSX.Element => {
               </li>
         </ul>
         </div>
+        {!web3Provider?
+          <></>
+        :
         <PageObserver />
+        }    
       </div>
     </div>
    </div>

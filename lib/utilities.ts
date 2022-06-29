@@ -4,14 +4,15 @@ const { utils, BigNumber } = require('ethers')
 
 export function getChainData(chainId?: number): IChainData {
   if (!chainId) {
-    return null
+    // return null
+    return unknownChains[0]
   }
   const chainData = supportedChains.filter(
     (chain: any) => chain.chain_id === chainId
   )[0]
 
   if (!chainData) {
-    return null //unknownChains[0]
+    return unknownChains[0]
     //call switch network
     // throw new Error('ChainId missing or not supported for')
   }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext } from 'react'
 
 export type StateType = {
   provider?: any
@@ -68,15 +68,54 @@ export function reducer(state: StateType, action: ActionType): StateType {
 
 // export const connectp = (): JSX.Element => {
 
-export const Context = createContext<StateType>(initialState)
+// export const Context1 = createContext<StateType>(initialState)
+const defaultDispatch: React.Dispatch<ActionType> = () => initialState // we never actually use this
+export const Context1 = createContext({
+  state: initialState,
+  dispatch: defaultDispatch, // just to mock out the dispatch type and make it not optioanl
+})
 
 export function useDappContext() {
-  return useContext(Context)
+  const c = useContext(Context1)
+  return c //useContext(ctx)
+  
+// //   // return useContext(Context1)
 }
 
 // export function PageContextProvider({ children }) {
-//   const [state, dispatch] = useReducer(reducer, initialState)
+//   const [state, dispatch] = useReducer<React.Reducer<StateType, ActionType>>(reducer, initialState)
 //   return (
-//     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+//     <Context1.Provider value={{ state, dispatch }}>{ children }</Context.Provider>
 //   )
 // }
+
+
+// create context with no upfront defaultValue
+// without having to do undefined check all the time
+// export function createCtx<StateType, ActionType>(
+//   reducer: React.Reducer<StateType, ActionType>,
+//   initialState: StateType,
+// ) {
+//   const defaultDispatch: React.Dispatch<ActionType> = () => initialState // we never actually use this
+//   let ctx 
+//   ctx = createContext<>({
+//     state: initialState,
+//     dispatch: defaultDispatch, // just to mock out the dispatch type and make it not optioanl
+//   })
+//   function Provider(props: React.PropsWithChildren<{}>) {
+//     const [state, dispatch] = useReducer<React.Reducer<StateType, ActionType>>(reducer, initialState)
+//     return <ctx.Provider value={{ state, dispatch }} {...props} />
+//   }
+//   return [ctx, Provider] as const
+// }
+
+// const [ctx, CtxProvider] = createCtx(reducer, initialState)
+// export {ctx, CtxProvider}
+
+// export function useDappContext() {
+//   const context = useContext(ctx)
+//   if (context === undefined) throw new Error(`No provider for AppContext given`)
+//   return context
+// }
+
+

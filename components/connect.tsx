@@ -1,15 +1,13 @@
-import { providers } from 'ethers'
-import Head from 'next/head'
-import { useCallback, useEffect, useState, useMemo } from 'react'
-import {DropDownMenu} from "../lib/dropdownmenu"
+import  providers from '@ethersproject/providers'
 
+// import Head from 'next/head'
+import { useCallback, useEffect} from 'react'
 import Web3Modal from 'web3modal'
 import {
-  ellipseAddress,
   getChainData,
 } from '../lib/utilities'
 import { networkParams } from '../lib/chains'
-import { StateType, useDappContext } from '../lib/context'
+import { useDappContext } from '../lib/context'
 import { providerOptions } from '../lib/modelProvider'
 
 
@@ -31,6 +29,7 @@ if (typeof window !== 'undefined') {
 
 export const ConnectWButton = (): JSX.Element => {
   const { state, dispatch } = useDappContext()
+  
   const { provider, web3Provider, address, chainId, isChainSupported } = state
 
   const connect = useCallback(async function () {
@@ -165,57 +164,57 @@ export const DisConnectWButton = (): JSX.Element => {
 }
 
 
-export const DisConnectAddress = (): JSX.Element => {
-  const { state, dispatch } = useDappContext()
-  const { provider, web3Provider, address, chainId, isChainSupported } = state
+// export const DisConnectAddress = (): JSX.Element => {
+//   const { state, dispatch } = useDappContext()
+//   const { provider, web3Provider, address, chainId, isChainSupported } = state
 
-  const disconnect = useCallback(
-    async function () {
-      try {
-        await web3Modal.clearCachedProvider()
-        if (provider?.disconnect && typeof provider.disconnect === 'function') {
-          await provider.disconnect()
-        }
-        dispatch({
-          type: 'RESET_WEB3_PROVIDER'
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    },
-    [provider]
-  )
+//   const disconnect = useCallback(
+//     async function () {
+//       try {
+//         await web3Modal.clearCachedProvider()
+//         if (provider?.disconnect && typeof provider.disconnect === 'function') {
+//           await provider.disconnect()
+//         }
+//         dispatch({
+//           type: 'RESET_WEB3_PROVIDER'
+//         })
+//       } catch (err) {
+//         console.log(err)
+//       }
+//     },
+//     [provider]
+//   )
 
-  useEffect(() => {
-    if (provider?.on) {
-      try {
-        const handleDisconnect = (error: { code: number; message: string }) => {
-          // eslint-disable-next-line no-console
-          console.log('disconnect', error)
-          disconnect()
-        }
-        provider.on('disconnect', handleDisconnect)
-        // Subscription Cleanup
-        return () => {
-          if (provider.removeListener) {
-            provider.removeListener('disconnect', handleDisconnect)
-          }
-        }
-      } catch (err) {
-        console.log(err)
-      }
-    }
-  }, [provider, disconnect])
+//   useEffect(() => {
+//     if (provider?.on) {
+//       try {
+//         const handleDisconnect = (error: { code: number; message: string }) => {
+//           // eslint-disable-next-line no-console
+//           console.log('disconnect', error)
+//           disconnect()
+//         }
+//         provider.on('disconnect', handleDisconnect)
+//         // Subscription Cleanup
+//         return () => {
+//           if (provider.removeListener) {
+//             provider.removeListener('disconnect', handleDisconnect)
+//           }
+//         }
+//       } catch (err) {
+//         console.log(err)
+//       }
+//     }
+//   }, [provider, disconnect])
 
-  return (
-      <>
-        {web3Provider ? (
-           DropDownMenu(ellipseAddress(address),disconnect)
-          //  ellipseAddress(address)
-        ) : (<></> )}
-      </>
-  )
-}
+//   return (
+//       <>
+//         {web3Provider ? (
+//            DropDownMenu(ellipseAddress(address),disconnect)
+//           //  ellipseAddress(address)
+//         ) : (<></> )}
+//       </>
+//   )
+// }
 
 export const ChainName = (): JSX.Element => {
   const { state } = useDappContext()
@@ -302,7 +301,7 @@ export const PageObserver = (): JSX.Element => {
 
         // https://docs.ethers.io/v5/concepts/best-practices/#best-practices--network-changes
         const handleChainChanged = (_hexChainId: string) => {
-          if (_hexChainId != chainId) {
+          if (_hexChainId != chainId?.toString()) {
             window.location.reload()
           }
         }
@@ -345,13 +344,13 @@ export const SwitchNetwork = (): JSX.Element => {
   const switchNetwork = async () => {
     try {
       // console.log('chain id=', chainId)
-      if (chainId !== '0x1') {
+      if (chainId?.toString() !== '0x1') {
         await web3Provider.provider.request({
           method: 'wallet_switchEthereumChain',
           params: [{ chainId: '0x1' }]
         })
       }
-    } catch (switchError) {
+    } catch (switchError: any) {
       if (switchError.code === 4902) {
         try {
           await web3Provider.provider.request({
