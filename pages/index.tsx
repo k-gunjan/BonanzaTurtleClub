@@ -4,15 +4,10 @@ import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
 import Image from 'next/image'
+import landingPageSmall from '../public/images/landingPageSmall.png'
+import landingPage from '../public/images/landingPage.png'
 // import dynamic from "next/dynamic";
-// const Header = dynamic(() => import("../components/Header").then(module => module.default));
-// const Header = dynamic( (()=>import('../components/Header')) as any,{ ssr: false}, )
-
-  // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
-  // const ChainName = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
-  // const PageObserver = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
-  // const SwitchNetwork = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
-  // const ConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
+// const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
   
 
 export const Home = (): JSX.Element => {
@@ -47,21 +42,27 @@ export const Home = (): JSX.Element => {
       <div className="relative w-screen h-screen flex justify-center ">
        {/* <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />
        <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" /> */}
+       <div className=" w-screen block sm:hidden  max-h-1/2 "> 
        <Image
-             src="/images/landingPageSmall.png"
+             src= {landingPageSmall}
              alt="image"
              layout="fill" // required
-             objectFit="cover" 
-             className="w-screen absolute sm:hidden bottom-0 max-h-1/2" 
+             objectFit="contain" 
+             objectPosition="bottom"
+             
              />
-       <Image
-             src="/images/landingPage.png"
-             alt="image"
-             layout="fill" // required
-             objectFit="cover" 
-             className="w-screen absolute hidden sm:block bottom-0" 
-             />
+        </div>
 
+        <div className=" w-screen hidden sm:block   max-h-1/2 "> 
+       <Image
+             src={landingPage}
+             alt="image"
+             layout="fill" // required
+             objectFit="contain" 
+            //  width="100%" height="100%"
+            objectPosition="bottom"
+             />
+       </div>
          {!web3Provider?
           <></>
                :
