@@ -1,5 +1,5 @@
-import  providers from '@ethersproject/providers'
-
+// import  providers from '@ethersproject/providers'
+import { providers } from 'ethers'
 // import Head from 'next/head'
 import { useCallback, useEffect} from 'react'
 import Web3Modal from 'web3modal'
@@ -30,7 +30,7 @@ if (typeof window !== 'undefined') {
 export const ConnectWButton = (): JSX.Element => {
   const { state, dispatch } = useDappContext()
   
-  const { provider, web3Provider, address, chainId, isChainSupported } = state
+  const { provider, isChainSupported } = state
 
   const connect = useCallback(async function () {
     try {
