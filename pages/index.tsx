@@ -3,9 +3,9 @@ import {ConnectWButton, DisConnectWButton, ChainName, PageObserver, SwitchNetwor
 import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import landingPageSmall from '../public/images/landingPageSmall.png'
-import landingPage from '../public/images/landingPage.png'
+// import landingPage from '../public/images/landingPage.png'
 // import dynamic from "next/dynamic";
 // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
   
@@ -15,12 +15,13 @@ export const Home = (): JSX.Element => {
     const { state, dispatch } = useDappContext()
     const { provider, web3Provider, address, chainId, isChainSupported } = state
 
+
   return (
-  <div className="container w-screen bg-customSky">
+  <div className="container w-screen  bg-customSky">
     <div className="text-black bg-blue min-h-screen">
       <Head>
       <title>Bonanza Turtle Club</title>
-        <link rel="icon" href="/favicon.jpg" />
+        <link rel="icon" href="/favicon.ico" />
 
         <meta property="og:title" content="Bonanza Turtle Club" key="ogtitle" />
         <meta property="og:description" content="Community and mint page of Bonanza Turtle Club members. A community to take the metaverse project ahead" key="ogdesc" />
@@ -39,9 +40,13 @@ export const Home = (): JSX.Element => {
       <Header />
     <div className="w-screen h-screen bg-customSky">
 
-      <div className="relative w-screen h-screen flex justify-center ">
-       {/* <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />
-       <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" /> */}
+      <div className="relative w-screen h-screen max-h-min flex justify-center ">
+       {/* <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />*/}
+       {/* <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" />  */}
+       
+       <div className="unset-img hidden sm:block relative w-screen h-screen">
+       <Image className="w-screen absolute bottom-0 object-cover" layout="fill" alt="b" src="/images/landingPage.png" /> 
+       </div>
        <div className=" w-screen block sm:hidden  max-h-1/2 "> 
        <Image
              src= {landingPageSmall}
@@ -49,20 +54,10 @@ export const Home = (): JSX.Element => {
              layout="fill" // required
              objectFit="contain" 
              objectPosition="bottom"
-             
              />
         </div>
 
-        <div className=" w-screen hidden sm:block   max-h-1/2 "> 
-       <Image
-             src={landingPage}
-             alt="image"
-             layout="fill" // required
-             objectFit="contain" 
-            //  width="100%" height="100%"
-            objectPosition="bottom"
-             />
-       </div>
+
          {!web3Provider?
           <></>
                :
