@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
 import Image, { StaticImageData } from 'next/image'
 import landingPageSmall from '../public/images/landingPageSmall.png'
-// import landingPage from '../public/images/landingPage.png'
+import landingPage from '../public/images/landingPage.png'
 // import dynamic from "next/dynamic";
 // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
   
@@ -45,15 +45,16 @@ export const Home = (): JSX.Element => {
        {/* <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" />  */}
        
        <div className="unset-img hidden sm:block relative w-screen h-screen">
-       <Image className="w-screen absolute bottom-0 object-cover" layout="fill" alt="b" src="/images/landingPage.png" /> 
+       <Image className="w-screen absolute bottom-0 object-cover" layout="fill" alt="b" src={landingPage} priority /> 
        </div>
-       <div className=" w-screen block sm:hidden  max-h-1/2 "> 
+       <div className="relative w-screen block sm:hidden  max-h-1/2 "> 
        <Image
              src= {landingPageSmall}
              alt="image"
              layout="fill" // required
              objectFit="contain" 
              objectPosition="bottom"
+             priority
              />
         </div>
 
