@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  @apply bg-gray-200 p-12;
-} */
+body {
+  @apply bg-gray-200 p-0;
+}
 
 @font-face {
   font-family: "Blueberry";
