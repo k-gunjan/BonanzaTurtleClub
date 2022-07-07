@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply margin: 0;
+    @apply m-0;
   }
 }
 
