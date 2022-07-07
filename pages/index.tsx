@@ -37,10 +37,10 @@ export const Home = (): JSX.Element => {
         <meta name="twitter:description" content="ommunity and mint page of Bonanza Turtle Club members. A community to take the metaverse project ahead" key="twdesc" />
         <meta name="twitter:image" content="https://bonanzaturtleclub.com/images/coolTurtle.png" key="twimage" />
       </Head>
-      <Header />
     <div className="w-screen h-screen bg-customSky">
 
       <div className="relative w-screen h-screen max-h-min flex justify-center ">
+      <Header />
        {/* <img className="w-screen absolute sm:hidden bottom-0  object-cover max-h-1/2 " alt="bs" src="/images/landingPageSmall.png" />*/}
        {/* <img className="w-screen absolute hidden sm:block bottom-0 object-cover  " alt="b" src="/images/landingPage.png" />  */}
        
