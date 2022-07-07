@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-200 p-0;
+@layer base {
+  body {
+    @apply margin: 0;
+  }
 }
 
 @font-face {
