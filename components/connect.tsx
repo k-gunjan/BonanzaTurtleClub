@@ -100,7 +100,7 @@ export const ConnectWButton = (): JSX.Element => {
 
 
   return (
-       <button type="button" onClick = {connect} className="mr-2 mb-2 inline-flex items-center rounded-lg border border-gray-200  px-5 py-2.5 text-center text-sm font-medium bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 ">
+       <button type="button" onClick = {connect} className="mr-2 mb-2 inline-flex items-center rounded-lg border border-gray-200  px-5 py-2 text-center text-sm font-medium bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-700 ">
         Connect Wallet
        </button>
   )
