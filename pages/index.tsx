@@ -36,13 +36,6 @@ export const Home = (): JSX.Element => {
         <meta name="twitter:title" content="Bonanza Turtle Club" key="twtitle" />
         <meta name="twitter:description" content="ommunity and mint page of Bonanza Turtle Club members. A community to take the metaverse project ahead" key="twdesc" />
         <meta name="twitter:image" content="https://bonanzaturtleclub.com/images/coolTurtle.png" key="twimage" />
-        <style>
-
-        body {
-           margin: 0;
-           padding: 0;
-        }
-        </style>
       </Head>
       <Header />
     <div className="w-screen h-screen bg-customSky">
