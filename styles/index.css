@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply m-0;
-  }
-}
-
 @font-face {
   font-family: "Blueberry";
   font-style: normal;
