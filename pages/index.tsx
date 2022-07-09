@@ -4,8 +4,8 @@ import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
 import Image, { StaticImageData } from 'next/image'
-import landingPageSmall from '../public/images/landingPageSmall.png'
-import landingPage from '../public/images/landingPage.png'
+import landingPageSmall from '../public/images/landingPageSmallV1.png'
+import landingPage from '../public/images/landingPageV1.png'
 // import dynamic from "next/dynamic";
 // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
   
