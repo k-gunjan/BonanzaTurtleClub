@@ -47,10 +47,10 @@ export const Home = (): JSX.Element => {
        <div className="unset-img hidden sm:block relative w-screen h-screen">
        <Image className="w-screen absolute bottom-0 object-cover" layout="fill" alt="b" src={landingPage} priority /> 
        </div>
-       <div className="relative w-screen block sm:hidden  max-h-1/2 "> 
+       <div className="relative w-screen flex sm:hidden   "> 
        <Image
              src= {landingPageSmall}
-             alt="image"
+             alt="bs"
              layout="fill" // required
              objectFit="contain" 
              objectPosition="bottom"
