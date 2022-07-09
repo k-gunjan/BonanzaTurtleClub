@@ -4,7 +4,7 @@ import { useDappContext } from '../lib/context'
 import Header from "../components/Header";
 import { ellipseAddress } from '../lib/utilities'
 import Image, { StaticImageData } from 'next/image'
-import landingPageSmall from '../public/images/landingPageSmall.png'
+import landingPageSmall from '../public/images/landingPageSmallV1.png'
 import landingPage from '../public/images/landingPageV1.png'
 // import dynamic from "next/dynamic";
 // const DisConnectWButton = dynamic( (()=>import('../components/connect')) as any,  { ssr: false},     )
@@ -47,7 +47,10 @@ export const Home = (): JSX.Element => {
        <div className="unset-img hidden sm:block relative w-screen h-screen">
        <Image className="w-screen absolute bottom-0 object-cover" layout="fill" alt="b" src={landingPage} priority /> 
        </div>
-       <div className="relative w-screen flex sm:hidden   "> 
+       <div className="unset-img block sm:hidden relative w-screen h-screen">
+       <Image className="w-screen absolute bottom-0 object-contain" objectPosition="bottom" layout="fill" alt="b" src={landingPageSmall} priority /> 
+       </div>
+       {/* <div className="relative w-screen flex sm:hidden   "> 
        <Image
              src= {landingPageSmall}
              alt="bs"
@@ -56,7 +59,7 @@ export const Home = (): JSX.Element => {
              objectPosition="bottom"
              priority
              />
-        </div>
+        </div> */}
 
 
          {!web3Provider?
